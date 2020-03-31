@@ -1,6 +1,17 @@
+# frozen_string_literal: true
+
 require "acts_as_subscription_on/version"
+
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 
 module ActsAsSubscriptionOn
   class Error < StandardError; end
-  # Your code goes here...
+
+  if defined?(ActiveRecord::Base)
+    require "acts_as_subscription_on/extenders/subscribable"
+    require "acts_as_subscription_on/extenders/subscriber"
+    require "acts_as_subscription_on/subscription"
+    ActiveRecord::Base.extend ActsAsSubscription::Extenders::Subscribable
+    ActiveRecord::Base.extend ActsAsSubscription::Extenders::Subscriber
+  end
 end
