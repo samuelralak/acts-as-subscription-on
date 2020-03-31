@@ -1,5 +1,5 @@
 class ActsAsSubscriptionOnMigration < ActiveRecord::Migration<%= migration_version %> 
-  def self.change 
+  def self.up 
     create_table :subscriptions do |t| 
       t.references :topic, polymorphic: true 
       t.references :subscriber, polymorphic: true 
@@ -8,5 +8,9 @@ class ActsAsSubscriptionOnMigration < ActiveRecord::Migration<%= migration_versi
       t.string :action 
       t.timestamps 
     end 
+  end
+
+  def self.down
+    drop_table :subscriptions
   end
 end

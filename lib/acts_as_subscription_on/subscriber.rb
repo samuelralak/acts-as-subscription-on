@@ -9,7 +9,7 @@ module ActsAsSubscriptionOn
     end
 
     def subscribe_to(topic, activity, action = nil)
-      ActsAsSubscription::Subscription.where(
+      ActsAsSubscriptionOn::Subscription.where(
         topic: topic,
         is_topic_owner: (topic.class.name == activity.class.name),
         subscriber: self,

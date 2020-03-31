@@ -11,7 +11,7 @@ module ActsAsSubscriptionOn
     require "acts_as_subscription_on/extenders/subscribable"
     require "acts_as_subscription_on/extenders/subscriber"
     require "acts_as_subscription_on/subscription"
-    ActiveRecord::Base.extend ActsAsSubscription::Extenders::Subscribable
-    ActiveRecord::Base.extend ActsAsSubscription::Extenders::Subscriber
+    ActiveRecord::Base.extend ActsAsSubscriptionOn::Extenders::Subscribable
+    ActiveRecord::Base.extend ActsAsSubscriptionOn::Extenders::Subscriber
   end
 end
