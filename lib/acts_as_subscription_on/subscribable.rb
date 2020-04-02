@@ -8,14 +8,8 @@ module ActsAsSubscriptionOn
       end
     end
 
-    def subscribed_to(subscriber, activity, action = nil)
-      ActsAsSubscriptionOn::Subscription.where(
-        topic: self,
-        is_topic_owner: (self.class.name == activity.class.name),
-        subscriber: subscriber,
-        activity: activity,
-        action: action,
-      ).first_or_create!
+    def get_subscribers()
+      subscription_topics.where(topic_id: self.id).map(&:subscriber)
     end
   end
 end
